@@ -4,26 +4,21 @@
 Tabela de conteúdos
 =================
 <!--ts-->
-   * [Sobre](#Sobre)
-   * [Tabela de Conteudo](#tabela-de-conteudo)
-   * [Instalação](#instalacao)
-   * [Como usar](#como-usar)
+ * [Instalação](#instalação)
+ * [Como usar](#como-usar)
       * [Pre Requisitos](#pre-requisitos)
-      * [Local files](#local-files)
-      * [Remote files](#remote-files)
-      * [Multiple files](#multiple-files)
-      * [Combo](#combo)
-   * [Tests](#testes)
-   * [Tecnologias](#tecnologias)
+ * [Tecnologias](#tecnologias)
 <!--te-->
+
 Instalação
 =================
-Como usar
-=================
+<p>É necessário um compilador para rodar o script Python.</p>
+
 Pré-Requisitos
 =================
-Tests
-=================
+Python 3.7
+Pygame - uma biblioteca feita para desenvolvimento de jogos
+
 Tecnologias
 =================
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/py)
