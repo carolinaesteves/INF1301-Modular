@@ -14,6 +14,7 @@ lY = -300
 uY = -300
 dY = -300
 oY = -300
+vol = 0.4
 
 #seta tela inicial
 tela = pygame.display.set_mode(AxL)
@@ -27,10 +28,13 @@ u = pygame.image.load('logo-u.png')
 d = pygame.image.load('logo-d.png')
 o = pygame.image.load('logo-o.png')
 ays = pygame.image.load('w-ays.png')
+eb = pygame.image.load('eb....png')
+sImg = pygame.image.load('sound.png')
+nsImg = pygame.image.load('no-sound.png')
 
 #carrega musica de fundo
 mixer.music.load('gold-saucer-8bit.wav')
-mixer.music.set_volume(0.4)
+mixer.music.set_volume(vol)
 
 
 #define um botão genérico
@@ -102,11 +106,14 @@ def show_logo():
     tela.blit(d, (270, dY));
     tela.blit(o, (340, oY));
     
+        
 #criando os botoes
 botaoP = button(330, 300, 130, 55, 'b-play.png')
+botaoSc = button(330, 405, 130, 55, 'b-score.png')
 botaoQ = button(330, 510, 130, 55, 'b-quit.png')
 botaoy = button(260, 380, 130, 55, 'b-yes.png')
 botaon = button(420, 380, 130, 55, 'b-no.png')
+botaoSo = button(730, 540, 40, 40, 'sound.png')
 
 #loops
 intro = True
@@ -167,14 +174,20 @@ while intro:
 
 
     pygame.display.update()
+
     if timer > 4500:
         intro = False
 
+
 mixer.music.play(-1)
+soundOn = True
+
 
 while running:
     botaoP.draw(tela)
+    botaoSc.draw(tela)
     botaoQ.draw(tela)
+    botaoSo.draw(tela)
 
     for event in pygame.event.get():
         pos = pygame.mouse.get_pos()
@@ -187,8 +200,22 @@ while running:
         if event.type == pygame.MOUSEBUTTONDOWN:
             if botaoP.isOver(pos):
                 print('clicou no botao play')
+                
+
+            if botaoSc.isOver(pos):
+                tela.blit(eb,(475,320))
+            
             if botaoQ.isOver(pos):
                 willQuit()
+
+            if botaoSo.isOver(pos):
+                if vol == 0.4:
+                    vol = 0
+                    mixer.music.set_volume(vol)
+                else:
+                    vol = 0.4
+                    mixer.music.set_volume(vol)
+                    
 
         if event.type == pygame.MOUSEMOTION:
             if botaoP.isOver(pos):
@@ -196,7 +223,11 @@ while running:
             else:
                 botaoP.text = 'b-play.png'
 
-
+            if botaoSc.isOver(pos):
+                botaoSc.text = 'b-score-m.png'
+            else:
+                botaoSc.text = 'b-score.png'
+            
             if botaoQ.isOver(pos):
                 botaoQ.text = 'b-quit-m.png'
             else:
