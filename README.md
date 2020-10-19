@@ -17,7 +17,7 @@ Pré-Requisitos
 
 Instalação
 =================
-É necessário um compilador para rodar o script Python. Fazendo o download diretamente do site oficial do [Python](https://www.python.org/downloads/) é possível adquirir o Python e uma IDLE simplificada capaz de rodar e editar o script. Entre outros editores que usamos estão o [VSCode](https://code.visualstudio.com/) e o [Pycharm](https://www.jetbrains.com/pt-br/pycharm/download/#section=windows).
+É necessário um interpretador para rodar o script Python. Fazendo o download diretamente do site oficial do [Python](https://www.python.org/downloads/) é possível adquirir o Python e uma IDLE simplificada capaz de rodar e editar o script. Entre outros editores que usamos estão o [VSCode](https://code.visualstudio.com/) e o [Pycharm](https://www.jetbrains.com/pt-br/pycharm/download/#section=windows).
 Por padrão esta instalação do python já vem com o pip, um gerenciador de pacotes muito útil, através do qual vamos adquirir a biblioteca pygame.
 Após a instalação do Python, abra o terminal e digite:
 
