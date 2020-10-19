@@ -48,13 +48,13 @@ def select_number():
                 exit()
             if event.type == pg.MOUSEBUTTONDOWN:
                 if rect2.collidepoint(event.pos):
-                    return text2
+                    return int(text2)
 
                 elif rect3.collidepoint(event.pos):
-                    return text3
+                    return int(text3)
 
                 elif rect4.collidepoint(event.pos):
-                    return text4
+                    return int(text4)
 
 # Classe utilizada para inputbox de nome dos jogadores
 
@@ -110,7 +110,6 @@ def input_name():
 
     # Chamando a função para saber quantos jogadores são
     quant = select_number()
-    quant = int(quant)
     #Declarando inputbox
     input_box1 = InputBox(100, 150, 300, 35)
     input_boxes = [input_box1]
@@ -122,10 +121,8 @@ def input_name():
     txt_surface1 = FONTletras.render(text1, True, madeira)
     screen.blit(txt_surface1, (107, 255))
     pg.draw.rect(screen, COLOR_INACTIVE, rect1, 2)
-    # Definindo a lista que vai retorna a quant de players e os nomes
-    lista = []
-    # Introduzindo o numero de quantidade de player na lista
-    lista.append(quant)
+    # Definindo a lista que vai retorna a quant de players e os nomes, e já introduzindo o numero de quantidade de player na lista
+    lista = [quant]
     # Contador
     i = 1
     # While para repetir o código na quantidade de player necessário, assim podendo registrar o nome de todos os jogadores.
@@ -148,8 +145,9 @@ def input_name():
                     quant = 0
                 if event.type == pg.MOUSEBUTTONDOWN:
                     if rect1.collidepoint(event.pos):
-                        done = True
-
+                        for box in input_boxes:
+                            if box.text != '':
+                                done = True
 
                 for box in input_boxes:
                     box.eventobox(event)
@@ -172,7 +170,7 @@ def input_name():
         quant -= 1
         # Contador utilizado no título
         i += 1
-        
+
     # Retorna nossa lista pronta com o número de players, e seus respectivos nomes.
     return lista
 
