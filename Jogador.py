@@ -1,3 +1,20 @@
+# Tabela de Versionamento do Módulo Jogador
+# Desenvolvedor do Módulo: João Pedro Botelho
+#
+# Tabela baseada no git log do repositório local do módulo
+#
+# Autor João Pedro Botelho, no dia 01/10:
+# cria versão inicial do input com tkinter
+#
+# Autor João Pedro Botelho, no dia 10/10:
+# cria primeira versao com pygame
+#
+# Autor João Pedro Botelho, no dia 15/10:
+# conserta select_number
+#
+# Autor João Pedro Botelho, no dia 17/10:
+# finaliza input_name com interface grafica
+
 import pygame
 from pygame import font
 

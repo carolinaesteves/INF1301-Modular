@@ -1,3 +1,11 @@
+# Tabela de Versionamento do Módulo Testes
+# Desenvolvedor do Módulo: Victor Fróes, Ana Carolina Esteves, João Pedro Botelho
+#
+# Tabela baseada no git log do repositório local do módulo
+# 
+# Autor Victor Fróes,Ana Carolina Esteves, João Pedro Botelho no dia 15/10:
+# desenvolve testes
+#
 
 import unittest
 from unittest import mock
