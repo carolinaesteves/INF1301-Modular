@@ -1,11 +1,12 @@
 import pygame
 from pygame import mixer
+import Jogador
+
+def executaMenu():
 
 
-def executaMenu(l,u,d,o,ays):
-    
     # inicializa a biblioteca pygame
-    #pygame.init()
+    pygame.init()
 
     branco = (255, 255, 255)
     verde = (0, 253, 0)
@@ -16,6 +17,9 @@ def executaMenu(l,u,d,o,ays):
     uY = -300
     dY = -300
     oY = -300
+    vol = 0.4
+
+    lisJogadores = []
 
     # seta tela inicial
     tela = pygame.display.set_mode(AxL)
@@ -23,21 +27,22 @@ def executaMenu(l,u,d,o,ays):
     # seta o nome do jogo na janela
     pygame.display.set_caption("Ludo")
 
-    '''#carrega imagens
+    # carrega imagens
     l = pygame.image.load('logo-l.png')
     u = pygame.image.load('logo-u.png')
     d = pygame.image.load('logo-d.png')
     o = pygame.image.load('logo-o.png')
     ays = pygame.image.load('w-ays.png')
+    eb = pygame.image.load('eb....png')
+    sImg = pygame.image.load('sound.png')
+    nsImg = pygame.image.load('no-sound.png')
 
-    #carrega musica de fundo
+    # carrega musica de fundo
     mixer.music.load('gold-saucer-8bit.wav')
-    mixer.music.set_volume(0.4)
-    '''
+    mixer.music.set_volume(vol)
+
 
     # define um botão genérico
-
-
     class button():
         def __init__(self, x, y, width, height, text=''):
             self.x = x
@@ -112,9 +117,11 @@ def executaMenu(l,u,d,o,ays):
 
     # criando os botoes
     botaoP = button(330, 300, 130, 55, 'b-play.png')
+    botaoSc = button(330, 405, 130, 55, 'b-score.png')
     botaoQ = button(330, 510, 130, 55, 'b-quit.png')
     botaoy = button(260, 380, 130, 55, 'b-yes.png')
     botaon = button(420, 380, 130, 55, 'b-no.png')
+    botaoSo = button(730, 540, 40, 40, 'sound.png')
 
     # loops
     intro = True
@@ -172,14 +179,20 @@ def executaMenu(l,u,d,o,ays):
                 exit()
 
         pygame.display.update()
+
         if timer > 4500:
             intro = False
 
+
     mixer.music.play(-1)
+    soundOn = True
+
 
     while running:
         botaoP.draw(tela)
+        botaoSc.draw(tela)
         botaoQ.draw(tela)
+        botaoSo.draw(tela)
 
         for event in pygame.event.get():
             pos = pygame.mouse.get_pos()
@@ -191,9 +204,21 @@ def executaMenu(l,u,d,o,ays):
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if botaoP.isOver(pos):
-                    print('clicou no botao play')
+                    running = False
+
+                if botaoSc.isOver(pos):
+                    tela.blit(eb, (475, 320))
+
                 if botaoQ.isOver(pos):
                     willQuit()
+
+                if botaoSo.isOver(pos):
+                    if vol == 0.4:
+                        vol = 0
+                        mixer.music.set_volume(vol)
+                    else:
+                        vol = 0.4
+                        mixer.music.set_volume(vol)
 
             if event.type == pygame.MOUSEMOTION:
                 if botaoP.isOver(pos):
@@ -201,9 +226,17 @@ def executaMenu(l,u,d,o,ays):
                 else:
                     botaoP.text = 'b-play.png'
 
+                if botaoSc.isOver(pos):
+                    botaoSc.text = 'b-score-m.png'
+                else:
+                    botaoSc.text = 'b-score.png'
+
                 if botaoQ.isOver(pos):
                     botaoQ.text = 'b-quit-m.png'
                 else:
                     botaoQ.text = 'b-quit.png'
 
-        pygame.display.update()
+            pygame.display.update()
+
+    lisJogadores = Jogador.retorna_jogadores(tela)
+    return lisJogadores
