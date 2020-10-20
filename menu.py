@@ -1,5 +1,6 @@
 import pygame
 from pygame import mixer
+import Jogador
 
 
 #inicializa a biblioteca pygame
@@ -15,6 +16,8 @@ uY = -300
 dY = -300
 oY = -300
 vol = 0.4
+
+lisJogadores = []
 
 #seta tela inicial
 tela = pygame.display.set_mode(AxL)
@@ -199,9 +202,10 @@ while running:
 
         if event.type == pygame.MOUSEBUTTONDOWN:
             if botaoP.isOver(pos):
-                print('clicou no botao play')
+                running = False
                 
-
+           
+                
             if botaoSc.isOver(pos):
                 tela.blit(eb,(475,320))
             
@@ -236,3 +240,4 @@ while running:
 
     pygame.display.update()
 
+lisJogadores = Jogador.retorna_jogadores(tela)
